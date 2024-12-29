@@ -8,7 +8,7 @@ const UserPostsPage = () => {
   const params = useParams();
   const userId = Array.isArray(params?.id) ? params.id[0] : params?.id || "1";
   const { loading, error, data } = useQuery(GET_USER_POSTS(userId));
-
+  console.log(data);
   if (loading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -23,7 +23,13 @@ const UserPostsPage = () => {
         ]}
       />
       {posts.map((post: any) => (
-        <PostCard key={post.id} id={post.id} title={post.title} />
+        <PostCard
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          body={post.body}
+          userName={post.user.username}
+        />
       ))}
     </div>
   );

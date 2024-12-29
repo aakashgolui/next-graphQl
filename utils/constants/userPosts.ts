@@ -7,6 +7,11 @@ export const GET_USER_POSTS = (id: string) => gql`
         data {
           id
           title
+          body
+          user {
+            id
+            username
+          }
         }
       }
     }

@@ -6,6 +6,11 @@ export const GET_ALL_POSTS = gql`
       data {
         id
         title
+        body
+        user {
+          id
+          username
+        }
       }
       meta {
         totalCount

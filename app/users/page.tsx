@@ -4,7 +4,7 @@ import { GET_USERS } from "@/utils";
 import { useQuery } from "@apollo/client";
 
 const Userspage = () => {
-  const { loading, error, data } = useQuery(GET_USERS);
+  const { loading, data } = useQuery(GET_USERS);
 
   if (loading) return <Loader />;
 

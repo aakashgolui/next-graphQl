@@ -1,6 +1,11 @@
 "use client";
 
-import { AppShell as MantineAppShell, Burger, NavLink } from "@mantine/core";
+import {
+  AppShell as MantineAppShell,
+  Burger,
+  NavLink,
+  Flex,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ReactNode } from "react";
 import {
@@ -25,8 +30,11 @@ export const AppShell = ({ children }: { children: ReactNode }) => {
       }}
       padding="md"
     >
-      <MantineAppShell.Header bg="var(--mantine-color-gray-light)">
-        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+      <MantineAppShell.Header bg="blue">
+        <Flex align={{ base: "center" }} className="h-[100%]">
+          <Burger opened={opened} hiddenFrom="sm" onClick={toggle} size="sm" />
+          <h1 className="text-white ml-2 font-bold">Next.js + GraphQL</h1>
+        </Flex>
       </MantineAppShell.Header>
 
       <MantineAppShell.Navbar>

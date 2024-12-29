@@ -30,7 +30,13 @@ const PostsPage: React.FC = () => {
       <Breadcrumbs links={[{ title: "Posts", href: "/posts" }]} />
 
       {posts.map((post: any) => (
-        <PostCard key={post.id} id={post.id} title={post.title} />
+        <PostCard
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          body={post.body}
+          userName={post.user.username}
+        />
       ))}
 
       <Pagination total={total} value={activePage} onChange={setPage} mt="sm" />
