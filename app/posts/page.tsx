@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_POSTS } from "@/utils";
-import { Loader, PostCard } from "@/components";
+import { Breadcrumbs, Loader, PostCard } from "@/components";
 import { Pagination } from "@mantine/core";
 import { useState } from "react";
 
@@ -27,6 +27,8 @@ const PostsPage: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-2">
+      <Breadcrumbs links={[{ title: "Posts", href: "/posts" }]} />
+
       {posts.map((post: any) => (
         <PostCard key={post.id} id={post.id} title={post.title} />
       ))}
