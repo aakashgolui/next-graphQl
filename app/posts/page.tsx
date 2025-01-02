@@ -1,18 +1,25 @@
 "use client";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_POSTS } from "@/utils";
-import { Breadcrumbs, Loader, PostCard } from "@/components";
+import { Breadcrumbs, CreatePost, Loader, PostCard } from "@/components";
 import { Pagination } from "@mantine/core";
 import { useState } from "react";
 
 const PostsPage: React.FC = () => {
+  const perPage = 5;
   const [activePage, setPage] = useState(1);
   const { loading, error, data } = useQuery(GET_ALL_POSTS, {
     variables: {
       options: {
+        sort: [
+          {
+            field: "id",
+            order: "DESC",
+          },
+        ],
         paginate: {
           page: activePage,
-          limit: 5,
+          limit: perPage,
         },
       },
     },
@@ -29,6 +36,8 @@ const PostsPage: React.FC = () => {
     <div className="flex flex-col gap-2">
       <Breadcrumbs links={[{ title: "Posts", href: "/posts" }]} />
 
+      <CreatePost />
+
       {posts.map((post: any) => (
         <PostCard
           key={post.id}
@@ -39,7 +48,12 @@ const PostsPage: React.FC = () => {
         />
       ))}
 
-      <Pagination total={total} value={activePage} onChange={setPage} mt="sm" />
+      <Pagination
+        total={total / perPage}
+        value={activePage}
+        onChange={setPage}
+        mt="sm"
+      />
     </div>
   );
 };

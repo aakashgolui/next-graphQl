@@ -14,7 +14,7 @@ const CREATE_POST_MUTATION = gql`
   }
 `;
 
-export const CreatePost = () => {
+const CreatePostPage = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -26,7 +26,7 @@ export const CreatePost = () => {
     try {
       await createPost({
         variables: {
-          input: { title, body },
+          input: { title, body, userId: 1 },
         },
       });
       alert("Post created successfully!");
@@ -83,3 +83,5 @@ export const CreatePost = () => {
     </div>
   );
 };
+
+export default CreatePostPage;
